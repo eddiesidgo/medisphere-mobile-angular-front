@@ -14,8 +14,20 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list [inset]="true">
+  <ion-list>
     <ion-item>
+      <ion-button class="ion-justify-content-center" size="small" color="dark"><ion-icon name="add-circle-outline"></ion-icon></ion-button>
+    </ion-item>
+
+    <ion-item *ngFor="let paciente of pacientes">
+      <ion-label>Nombre: {{ paciente.nombre}} {{ paciente.apellido }}</ion-label>
+      <ion-label>DUI: {{ paciente.dui}} </ion-label>
+      <ion-button color="dark"><ion-icon name="create-outline"></ion-icon></ion-button>
+      <ion-button color="dark"><ion-icon name="trash-outline"></ion-icon></ion-button>
+    </ion-item>
+    <!-- <ion-item><ion-button (click)="addNewRow()">Add New Row</ion-button></ion-item>
+    <ion-item *ngFor="let item of data">{{ item.name }} <ion-button color="danger" (click)="deleteRow(item.id)">Delete</ion-button> </ion-item> -->
+    <!-- <ion-item>
       <ion-label>Juan Perez | Cirugía</ion-label>
     </ion-item>
     <ion-item>
@@ -29,7 +41,31 @@
     </ion-item>
     <ion-item>
       <ion-label>Shafick Handal | Curacion</ion-label>
-    </ion-item>
+    </ion-item> -->
   </ion-list>
+
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="addNewRow()">Add New Row</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+
+      <ion-col size="2"><strong>ID</strong></ion-col>
+      <ion-col size="4"><strong>Name</strong></ion-col>
+      <ion-col size="4"><strong>Email</strong></ion-col>
+      <ion-col size="2"><strong>Actions</strong></ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let item of data">
+      <ion-col size="2">{{ item.id }}</ion-col>
+      <ion-col size="4">{{ item.name }}</ion-col>
+      <ion-col size="4">{{ item.email }}</ion-col>
+      <ion-col size="2">
+        <ion-button color="danger" (click)="deleteRow(item.id)">Delete</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
 
 </ion-content>
