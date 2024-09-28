@@ -22,7 +22,7 @@ export class ConfiguracionPage implements OnInit {
 
   ngOnInit() {
     // Use matchMedia to check the user preference
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: light)');
 
     // Initialize the dark palette based on the initial
     // value of the prefers-color-scheme media query

@@ -11,22 +11,95 @@
     <ion-toolbar>
       <ion-title size="large">Photo Gallery</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> <br>
 
+  <div id="container">
+    <ion-button routerLink="/pacientes" fill="solid" shape="round">
+      <ion-icon slot="start" name="person-circle"></ion-icon>
+      Ir a Pacientes
+    </ion-button>
+    
+  </div>
 
-    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-grid>
+    <ion-row>
+      <!-- Widget: Pacientes Registrados -->
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Pacientes Registrados</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2>150</h2>
+            <p>Total de pacientes en la clínica</p>
+          </ion-card-content>
+          <ion-item>
+            <ion-button routerLink="/pacientes" fill="outline" slot="end">Ver Pacientes</ion-button>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+  
+      <!-- Widget: Citas del Día -->
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Citas del Día</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2>10</h2>
+            <p>Citas programadas para hoy</p>
+          </ion-card-content>
+          <ion-item>
+            <ion-button fill="outline" slot="end">Ver Citas</ion-button>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row>
+      <!-- Widget: Doctores Disponibles -->
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Doctores Disponibles</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2>5</h2>
+            <p>Doctores en consulta actualmente</p>
+          </ion-card-content>
+          <ion-item>
+            <ion-button fill="outline" slot="end">Ver Doctores</ion-button>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+  
+      <!-- Widget: Ingresos Mensuales -->
+      <ion-col size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Ingresos Mensuales</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <h2>$12,000</h2>
+            <p>Ingresos estimados este mes</p>
+          </ion-card-content>
+          <ion-item>
+            <ion-button fill="outline" slot="end">Ver Detalles</ion-button>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+    <!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
       <ion-fab-button>
         <ion-icon name="camera"></ion-icon>
       </ion-fab-button>
-    </ion-fab>
+    </ion-fab> -->
 
 
-    <div id="container">
-      <ion-button routerLink="/pacientes" fill="solid" shape="round">
-        <ion-icon slot="start" name="person-circle"></ion-icon>
-        Ir a Pacientes
-      </ion-button>
-    </div>
+    
 
 
 </ion-content>
