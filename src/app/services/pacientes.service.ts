@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -23,7 +23,12 @@ export class PacientesService {
 
   // Actualizar un paciente existente
   updatePaciente(id: number, paciente: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}`, paciente);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',  // Indicamos que estamos enviando JSON
+      'Accept': 'application/json'         // Indicamos que esperamos recibir JSON
+    });
+
+    return this.http.put<any>(`${this.apiUrl}/${id}`, paciente, { headers });
   }
 
   // Eliminar un paciente

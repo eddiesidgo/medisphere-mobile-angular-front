@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PacientesService } from '../services/pacientes.service'; // Importa el servicio
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { PacienteFormComponent } from './paciente-form/paciente-form.component';
 
 
@@ -11,10 +11,10 @@ import { PacienteFormComponent } from './paciente-form/paciente-form.component';
 })
 export class PacientesPage implements OnInit {
   pacientes: any[] = [];
-  selectedPaciente: any = null;
+  selectedPaciente: any;
   showForm = false;
 
-  constructor(private pacienteService: PacientesService, private modalController: ModalController) {}
+  constructor(private pacienteService: PacientesService, private modalController: ModalController, private alertController: AlertController) {}
 
   ngOnInit() {
     this.getPacientes();
@@ -56,11 +56,12 @@ async openModal(paciente: any = null) {
   }
 
  // Manejar la lógica de crear/actualizar paciente
- handleFormSubmit(pacienteData: any) {
+handleFormSubmit(pacienteData: any) {
+  // Verifica si el paciente tiene un ID. Si tiene, actualiza; si no, crea uno nuevo
   if (pacienteData.id) {
-    this.updatePaciente(pacienteData);
+    this.updatePaciente(pacienteData);  // Llamar a updatePaciente cuando hay un id
   } else {
-    this.createPaciente(pacienteData);
+    this.createPaciente(pacienteData);  // Llamar a createPaciente si no hay id
   }
 }
 
@@ -77,21 +78,22 @@ async openModal(paciente: any = null) {
     );
   }
 
-  // Método para actualizar un paciente usando el servicio
-  updatePaciente(pacienteData: any) {
-    this.pacienteService.updatePaciente(this.selectedPaciente.id, pacienteData).subscribe(
-      (data) => {
-        console.log('Paciente actualizado:', data);
-        const index = this.pacientes.findIndex(p => p.id === this.selectedPaciente.id);
-        if (index !== -1) {
-          this.pacientes[index] = data;
-        }
-      },
-      (error) => {
-        console.error('Error al actualizar paciente:', error);
+ // Método para actualizar un paciente usando el servicio
+updatePaciente(pacienteData: any) {
+  this.pacienteService.updatePaciente(pacienteData.id, pacienteData).subscribe(
+    (data) => {
+      console.log('Paciente actualizado:', data);
+      // Actualiza la lista de pacientes en el frontend
+      const index = this.pacientes.findIndex(p => p.id === pacienteData.id);
+      if (index !== -1) {
+        this.pacientes[index] = data;
       }
-    );
-  }
+    },
+    (error) => {
+      console.error('Error al actualizar paciente:', error);
+    }
+  );
+}
 
   // Método para eliminar un paciente (si lo necesitas)
   deletePaciente(id: number) {
@@ -104,4 +106,32 @@ async openModal(paciente: any = null) {
       }
     );
   }
+
+   // Método para confirmar la eliminación
+   async confirmDelete(id: number) {
+    const alert = await this.alertController.create({
+      header: 'Confirmar Eliminación',
+      message: '¿Estás seguro de que deseas eliminar este paciente?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Eliminación cancelada');
+          }
+        },
+        {
+          text: 'Eliminar',
+          handler: () => {
+            this.deletePaciente(id); // Llamar al método de eliminar paciente si se confirma
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 }
+
+
+

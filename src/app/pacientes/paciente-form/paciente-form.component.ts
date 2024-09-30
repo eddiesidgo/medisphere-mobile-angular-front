@@ -8,28 +8,28 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./paciente-form.component.scss'],
 })
 export class PacienteFormComponent implements OnInit {
-  @Input() paciente: any = null; // Recibe datos del paciente si estamos editando
+  @Input() paciente: any; // Recibe datos del paciente si estamos editando
   @Output() onSubmit = new EventEmitter<any>(); // Emitir los datos cuando se envía el formulario
   form!: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private modalController: ModalController) {
-    this.form = this.formBuilder.group({
-      nombre: [''],
-      apellido: [''],
-      dui: [''],
-      fecha_nacimiento: [''],
-      genero: [''],
-    });
   }
 
   ngOnInit() {
-    if (this.paciente) {
-      this.form.patchValue(this.paciente); // Rellena el formulario con los datos del paciente
-    }
+    // Inicializamos el formulario, si existe un paciente lo cargamos en el formulario
+    this.form = this.formBuilder.group({
+      nombre: [this.paciente?.nombre || ''],
+      apellido: [this.paciente?.apellido || ''],
+      dui: [this.paciente?.dui || ''],
+      fecha_nacimiento: [this.paciente?.fecha_nacimiento || ''],
+      genero: [this.paciente?.genero || '']
+    });
   }
 
   submitForm() {
-    this.modalController.dismiss(this.form.value); // Devuelve los datos del formulario al cerrar
+    const pacienteData = { ...this.form.value, id: this.paciente?.id || null }; // Asegura que el id esté presente si es una edición
+    console.log('Datos del paciente que se envían al componente padre:', pacienteData); // Verifica si el id está aquí
+    this.modalController.dismiss(pacienteData);
   }
 
   closeModal() {

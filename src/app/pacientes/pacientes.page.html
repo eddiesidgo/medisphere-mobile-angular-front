@@ -27,7 +27,7 @@
       <!-- <ion-label>Nacimiento: {{ paciente.fecha_nacimiento}} </ion-label> -->
       <ion-label>Genero: {{ paciente.genero}} </ion-label>
       <ion-button (click)="openModal(paciente)" color="dark"><ion-icon name="create-outline"></ion-icon></ion-button>
-      <ion-button color="dark"><ion-icon name="trash-outline"></ion-icon></ion-button>
+      <ion-button (click)="confirmDelete(paciente.id)" color="dark"><ion-icon name="trash-outline"></ion-icon></ion-button>
     </ion-item>
   </ion-list>
 
