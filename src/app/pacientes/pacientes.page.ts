@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PacientesService } from '../services/pacientes.service'; // Importa el servicio
 import { AlertController, ModalController } from '@ionic/angular';
 import { PacienteFormComponent } from './paciente-form/paciente-form.component';
+import { NotificationService } from '../services/notification.service';
 
 
 @Component({
@@ -13,8 +14,9 @@ export class PacientesPage implements OnInit {
   pacientes: any[] = [];
   selectedPaciente: any;
   showForm = false;
+  totalPacientes: number = 0;
 
-  constructor(private pacienteService: PacientesService, private modalController: ModalController, private alertController: AlertController) {}
+  constructor(private pacienteService: PacientesService, private modalController: ModalController, private alertController: AlertController, private notificationService: NotificationService) {}
 
   ngOnInit() {
     this.getPacientes();
@@ -25,6 +27,7 @@ export class PacientesPage implements OnInit {
     this.pacienteService.getPacientes().subscribe(
       (data) => {
         this.pacientes = data;
+        this.totalPacientes = data.length; // Actualiza el contador de pacientes
       },
       (error) => {
         console.error('Error al obtener pacientes:', error);
@@ -71,6 +74,8 @@ handleFormSubmit(pacienteData: any) {
       (data) => {
         console.log('Paciente creado:', data);
         this.pacientes.push(data);
+        this.getPacientes(); // Esto actualizará la lista completa de pacientes
+        this.notificationService.notifyPacienteAgregado(); // Notifica que se ha agregado un paciente
       },
       (error) => {
         console.error('Error al crear paciente:', error);
@@ -100,6 +105,8 @@ updatePaciente(pacienteData: any) {
     this.pacienteService.deletePaciente(id).subscribe(
       () => {
         this.pacientes = this.pacientes.filter(p => p.id !== id);
+        this.getPacientes(); // Esto actualizará la lista completa de pacientes
+        this.notificationService.notifyPacienteAgregado(); // Notifica que se ha agregado un paciente
       },
       (error) => {
         console.error('Error al eliminar paciente:', error);
