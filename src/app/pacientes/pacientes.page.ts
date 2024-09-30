@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import axios from 'axios';
+import { PacientesService } from '../services/pacientes.service'; // Importa el servicio
+import { ModalController } from '@ionic/angular';
+import { PacienteFormComponent } from './paciente-form/paciente-form.component';
+
 
 @Component({
   selector: 'app-pacientes',
@@ -8,38 +11,97 @@ import axios from 'axios';
 })
 export class PacientesPage implements OnInit {
   pacientes: any[] = [];
+  selectedPaciente: any = null;
+  showForm = false;
 
-  constructor() { }
+  constructor(private pacienteService: PacientesService, private modalController: ModalController) {}
 
   ngOnInit() {
     this.getPacientes();
   }
 
+  // Método para obtener todos los pacientes usando el servicio
   getPacientes() {
-    axios.get('http://127.0.0.1:8000/api/pacientes')
-     .then(response => {
-        this.pacientes = response.data;
-      })
-     .catch(error => {
-        console.error('Error:', error);
-      });
+    this.pacienteService.getPacientes().subscribe(
+      (data) => {
+        this.pacientes = data;
+      },
+      (error) => {
+        console.error('Error al obtener pacientes:', error);
+      }
+    );
   }
 
+// Método para abrir el modal
+async openModal(paciente: any = null) {
+  const modal = await this.modalController.create({
+    component: PacienteFormComponent,
+    componentProps: { paciente }, // Pasa el paciente seleccionado
+  });
 
+  // Escucha el evento del formulario
+  modal.onDidDismiss().then((result) => {
+    if (result.data) {
+      this.handleFormSubmit(result.data);
+    }
+  });
 
+  return await modal.present();
+}
 
-  // data = [
-  //   { id: 1, name: 'John Doe', email: 'john.doe@example.com' },
-  //   { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com' }
-  // ];
+  // Cerrar el modal
+  closeModal() {
+    this.showForm = false;
+    this.selectedPaciente = null;
+  }
 
-  // addNewRow() {
-  //   const newId = this.data.length + 1;
-  //   this.data.push({ id: newId, name: 'New User', email: `user${newId}@example.com` });
-  // }
+ // Manejar la lógica de crear/actualizar paciente
+ handleFormSubmit(pacienteData: any) {
+  if (pacienteData.id) {
+    this.updatePaciente(pacienteData);
+  } else {
+    this.createPaciente(pacienteData);
+  }
+}
 
-  // deleteRow(id: number) {
-  //   this.data = this.data.filter(item => item.id !== id);
-  // }
+  // Método para crear un nuevo paciente usando el servicio
+  createPaciente(pacienteData: any) {
+    this.pacienteService.createPaciente(pacienteData).subscribe(
+      (data) => {
+        console.log('Paciente creado:', data);
+        this.pacientes.push(data);
+      },
+      (error) => {
+        console.error('Error al crear paciente:', error);
+      }
+    );
+  }
 
+  // Método para actualizar un paciente usando el servicio
+  updatePaciente(pacienteData: any) {
+    this.pacienteService.updatePaciente(this.selectedPaciente.id, pacienteData).subscribe(
+      (data) => {
+        console.log('Paciente actualizado:', data);
+        const index = this.pacientes.findIndex(p => p.id === this.selectedPaciente.id);
+        if (index !== -1) {
+          this.pacientes[index] = data;
+        }
+      },
+      (error) => {
+        console.error('Error al actualizar paciente:', error);
+      }
+    );
+  }
+
+  // Método para eliminar un paciente (si lo necesitas)
+  deletePaciente(id: number) {
+    this.pacienteService.deletePaciente(id).subscribe(
+      () => {
+        this.pacientes = this.pacientes.filter(p => p.id !== id);
+      },
+      (error) => {
+        console.error('Error al eliminar paciente:', error);
+      }
+    );
+  }
 }
