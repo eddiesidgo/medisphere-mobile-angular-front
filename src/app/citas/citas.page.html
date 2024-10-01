@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Citas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <full-calendar [options]="calendarOptions"></full-calendar> <br>
+
+  <ion-item *ngFor="let event of events">
+    <ion-label>
+      {{ event.title }} Fecha: {{ event.date }}
+    </ion-label>
+
+  </ion-item>
+</ion-content>
