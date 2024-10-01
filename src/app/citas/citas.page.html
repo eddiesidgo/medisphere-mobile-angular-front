@@ -8,6 +8,13 @@
 </ion-header>
 
 <ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+
+      <ion-title size="large">Citas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
   <full-calendar [options]="calendarOptions"></full-calendar> <br>
 
   <ion-item *ngFor="let event of events">

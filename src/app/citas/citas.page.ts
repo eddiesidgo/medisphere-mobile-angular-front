@@ -45,7 +45,8 @@ export class CitasPage implements OnInit {
       center: 'title',
       left: 'timeGridWeek,timeGridDay'
     },
-    events: [] // Inicialmente vacío, se llenará después en getCitas
+    events: [], // Inicialmente vacío, se llenará después en getCitas
+    height: 600, // Establece una altura fija en píxeles
   };
 
   handleDateClick(arg: DateClickArg) {

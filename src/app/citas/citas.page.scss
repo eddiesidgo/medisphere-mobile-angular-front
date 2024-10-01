@@ -1,0 +1,23 @@
+// /* Cambiar el tamaño de los botones en la barra de herramientas de FullCalendar */
+// :host ::ng-deep .fc .fc-toolbar button {
+//   font-size: 12px !important;  /* Cambia el tamaño de la fuente del botón */
+//   padding: 4px 8px !important; /* Ajusta el padding del botón */
+//   height: 25px !important;     /* Cambia la altura del botón */
+//   min-width: 50px !important;  /* Cambia el ancho mínimo del botón */
+// }
+
+/* Si también quieres ajustar el tamaño del título */
+:host ::ng-deep .fc-toolbar-title {
+  font-size: 15px !important; /* Ajusta el tamaño de la fuente del título */
+}
+
+
+// /* Añadir espacio entre los botones de la barra de herramientas */
+// :host ::ng-deep .fc .fc-toolbar button {
+//   margin: 0 2px !important;  /* Añadir margen horizontal entre los botones */
+// }
+
+/* Añadir padding a la barra de herramientas para que no esté pegada a los bordes */
+:host ::ng-deep .fc .fc-toolbar {
+  padding: 8px !important; /* Ajusta el padding de toda la barra */
+}
