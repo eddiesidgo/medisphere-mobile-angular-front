@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="closeModal()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Doctores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Formulario de Doctor</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <ion-item>
+          <ion-label>Nombre</ion-label>
+          <ion-input formControlName="nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Apellido</ion-label>
+          <ion-input formControlName="apellido"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Especialidad</ion-label>
+          <ion-input formControlName="especialidad"></ion-input>
+        </ion-item>
+
+
+        <!-- Botón de enviar -->
+      <ion-button expand="block" type="submit" [disabled]="!form.valid">Guardar</ion-button>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

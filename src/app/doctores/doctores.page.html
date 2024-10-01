@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Doctores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Doctores</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item>
+      <ion-button (click)="openModal()" color="dark" expand="block">
+        Agregar Doctor
+      </ion-button>
+    </ion-item>
+    <ion-item *ngFor="let doctor of doctores">
+      <!-- <ion-avatar slot="start">
+        <img [src]="doctor.avatar" alt="Avatar">
+      </ion-avatar> -->
+      <ion-label>
+        <h2>Dr. {{ doctor.nombre }} {{ doctor.apellido }}</h2>
+        <p>{{ doctor.especialidad }}</p>
+      </ion-label>
+      <ion-button (click)="openModal(doctor)" color="dark"><ion-icon name="create-outline"></ion-icon></ion-button>
+      <ion-button (click)="confirmDelete(doctor.id)" color="dark"><ion-icon name="trash-outline"></ion-icon></ion-button>
+    </ion-item>
+
+  </ion-list>
+
+    <!-- Modal para el formulario de doctor -->
+    <ion-modal [isOpen]="showForm" (willDismiss)="closeModal()">
+      <ion-content>
+        <app-doctor-form
+          [doctor]="selectedDoctor"
+          (onSubmit)="handleFormSubmit($event)">
+        </app-doctor-form>
+      </ion-content>
+    </ion-modal>
+</ion-content>

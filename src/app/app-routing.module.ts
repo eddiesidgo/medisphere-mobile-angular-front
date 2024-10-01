@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'configuracion',
     loadChildren: () => import('./configuracion/configuracion.module').then( m => m.ConfiguracionPageModule)
+  },
+  {
+    path: 'doctores',
+    loadChildren: () => import('./doctores/doctores.module').then( m => m.DoctoresPageModule)
   }
 ];
 @NgModule({

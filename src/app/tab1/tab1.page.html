@@ -13,13 +13,13 @@
     </ion-toolbar>
   </ion-header> <br>
 
-  <div id="container">
+  <!-- <div id="container">
     <ion-button routerLink="/pacientes" fill="outline" shape="round">
       <ion-icon slot="start" name="person-circle"></ion-icon>
       Ir a Pacientes
     </ion-button>
 
-  </div>
+  </div> -->
 
   <ion-grid>
     <ion-row>
@@ -64,11 +64,11 @@
             <ion-card-title>Doctores Disponibles</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <h2>5</h2>
+            <h2>{{ totalDoctores }}</h2>
             <p>Doctores en consulta actualmente</p>
           </ion-card-content>
           <ion-item>
-            <ion-button fill="outline" slot="end">Ver Doctores</ion-button>
+            <ion-button routerLink="/doctores" fill="outline" slot="end">Ver Doctores</ion-button>
           </ion-item>
         </ion-card>
       </ion-col>
