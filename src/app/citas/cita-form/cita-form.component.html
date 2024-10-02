@@ -1,0 +1,41 @@
+<form [formGroup]="citaForm" (ngSubmit)="onSubmit()">
+  <ion-item>
+    <ion-label position="floating">Doctor ID</ion-label>
+    <ion-input formControlName="doctor_id"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Paciente ID</ion-label>
+    <ion-input formControlName="paciente_id"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Título</ion-label>
+    <ion-input formControlName="title"></ion-input>
+  </ion-item>
+
+  <!-- <ion-item>
+    <ion-label position="floating">Fecha</ion-label>
+    <ion-input type="date" formControlName="date"></ion-input>
+  </ion-item> -->
+
+  <ion-item>
+    <ion-label >Fecha y Hora</ion-label>
+    <!-- Botón que abre el selector de fecha y hora -->
+    <ion-datetime-button datetime="datetime"></ion-datetime-button>
+    <!-- Aquí se monta el modal con el selector de fecha y hora -->
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime id="datetime" presentation="date-time" (ionChange)="onDateChange($event)"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Estado</ion-label>
+    <ion-input formControlName="estado"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" type="submit">Crear Cita</ion-button>
+</form>
+

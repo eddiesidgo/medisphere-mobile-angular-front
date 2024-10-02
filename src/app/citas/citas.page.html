@@ -17,6 +17,9 @@
 
   <full-calendar [options]="calendarOptions"></full-calendar> <br>
 
+  <app-cita-form></app-cita-form>
+
+
   <ion-item *ngFor="let event of events">
     <ion-label>
       {{ event.title }} Fecha: {{ event.date }}

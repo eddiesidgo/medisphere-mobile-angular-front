@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'citas',
     loadChildren: () => import('./citas/citas.module').then( m => m.CitasPageModule)
+  },
+  {
+    path: 'consultas',
+    loadChildren: () => import('./consultas/consultas.module').then( m => m.ConsultasPageModule)
   }
 ];
 @NgModule({
