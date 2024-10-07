@@ -7,7 +7,19 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">consultas</ion-title>
+      <ion-title size="large">Consultas</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let consulta of consultas">
+      <ion-label>
+        <h2>Codigo de cita: {{ consulta.cita_id }}</h2>
+        <p>Doctor: {{ consulta.cita.doctor_id }}</p>
+        <p>Fecha: {{ consulta.cita.date }}</p>
+        <p>Diagnostico: {{ consulta.diagnostico }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
