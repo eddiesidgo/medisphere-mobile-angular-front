@@ -20,4 +20,9 @@ export class CitasService {
   createCita(citaData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/${'create'}`, citaData);
   }
+
+  // Actualizar una cita existente
+  updateCita(id: number, cita: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, cita);
+  }
 }
