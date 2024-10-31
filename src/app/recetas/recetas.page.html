@@ -1,9 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button color="medium" (click)="closeModal()">Cancelar</ion-button>
-    </ion-buttons>
-    <ion-title>Doctores</ion-title>
+    <ion-title>Recetas</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +10,7 @@
       <!-- <ion-card-title>Formulario de Doctor</ion-card-title> -->
     </ion-card-header>
     <ion-card-content>
-      <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <form >
         <ion-item>
           <ion-label>Carné</ion-label>
           <ion-input formControlName="carne"></ion-input>
@@ -36,7 +33,7 @@
 
 
         <!-- Botón de enviar -->
-      <ion-button expand="block" type="submit" [disabled]="!form.valid">Guardar</ion-button>
+      <ion-button expand="block" type="submit" >Guardar</ion-button>
 
       </form>
     </ion-card-content>

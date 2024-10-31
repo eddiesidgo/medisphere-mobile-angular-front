@@ -1,0 +1,39 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!-- <ion-title>Login</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-card class="ion-no-margin">
+    <ion-img src="assets/img/header.png"></ion-img>
+    <ion-card-title>
+      BIENVENIDOS
+    </ion-card-title>
+    <ion-card-header>
+      <ion-card-subtitle class="ion-text.lowercase">
+        Esta es una plataforma para el control de pacientes & citas médicas.
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="Signin-btn">
+        <ion-button (click)="Btnlogin('top')"  fill="solid" shape="round" class="login">Iniciar</ion-button>
+        <ion-button (click)="BtnPassword('top')" fill="outline" shape="round" color="dark">Recuperar</ion-button>
+      </div>
+      <div class="text-tag">
+        <span>----------O----------</span>
+      </div>
+      <div class="social-icons">
+        <ion-button fill="clear" class="googlebtn ion-no-padding" >
+           <ion-img src="assets/icon/local.png"></ion-img>
+         </ion-button>
+         <ion-button fill="clear" class="googlebtn ion-no-padding" >
+            <ion-img src="assets/icon/microsoft.png"></ion-img>
+         </ion-button>
+         <ion-button fill="clear" class="googlebtn ion-no-padding" >
+            <ion-img src="assets/icon/email.png"></ion-img>
+         </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

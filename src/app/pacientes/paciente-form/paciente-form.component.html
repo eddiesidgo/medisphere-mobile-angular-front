@@ -13,7 +13,7 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Formulario de Paciente</ion-card-title>
+      <!-- <ion-card-title>Formulario de Paciente</ion-card-title> -->
     </ion-card-header>
     <ion-card-content>
       <form [formGroup]="form" (ngSubmit)="submitForm()">
@@ -34,7 +34,8 @@
 
         <ion-item>
           <ion-label>Fecha de nacimiento</ion-label>
-          <ion-input formControlName="fecha_nacimiento"></ion-input>
+          <!-- <ion-input formControlName="fecha_nacimiento"></ion-input> -->
+          <ion-input formControlName="fecha_nacimiento" type="date" required></ion-input>
         </ion-item>
 
         <ion-item>

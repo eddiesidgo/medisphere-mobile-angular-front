@@ -17,6 +17,7 @@ export class DoctorFormComponent  implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
+      carne: [this.doctor?.carne || ''],
       nombre: [this.doctor?.nombre || ''],
       apellido: [this.doctor?.apellido || ''],
       especialidad: [this.doctor?.especialidad || '']

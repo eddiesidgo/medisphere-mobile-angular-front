@@ -1,17 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title>MediSphere</ion-title>
   </ion-toolbar>
 </ion-header>
-
+<!-- home -->
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+      <!-- Card: Crear receta -->
+  <ion-col size="6">
+    <ion-card button routerLink="/recetas" class="custom-card">
+      <ion-card-header>
+        <ion-card-title>Crear receta</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-icon name="duplicate-outline" size="large"></ion-icon>
+      <h4>0</h4>
+        <p>Recetas creadas</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+  
+
+  
+  
+  
+  <!-- Card: Recetas impresos -->
+  <ion-col size="6">
+
+    <ion-card button routerLink="/pacientes" class="custom-card">
+      <ion-card-header>
+        <ion-card-title>Imprimir receta médica</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-icon name="receipt-outline" size="large"></ion-icon>
+      <h4>0</h4>
+        <p>Recetas impresos</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+  </ion-grid>
 </ion-content>

@@ -15,7 +15,8 @@ export class Tab1Page implements OnInit {
   pacientes: any[] = [];
   doctores: any[] = [];
 
-  constructor(private pacientesService: PacientesService, private doctoresService: DoctoresService , private notificationService: NotificationService) {}
+  constructor(private pacientesService: PacientesService, 
+    private doctoresService: DoctoresService , private notificationService: NotificationService) {}
 
   ngOnInit() {
     this.getPacientesCount();

@@ -1,12 +1,11 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button default-href="#"></ion-back-button>
     </ion-buttons>
     <ion-title>Configuracion</ion-title>
     <ion-buttons slot="end">
       <ion-button color="dark">
-        <ion-icon slot="icon-only" ios="person-circle-outline" md="person-circle"></ion-icon>
+        <ion-icon routerLink="/pacientes" name="person-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -15,14 +14,14 @@
 <ion-content>
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Configuracion</ion-title>
+      <ion-title>Configuración</ion-title>
     </ion-toolbar>
   </ion-header>
+  <!-- <ion-list-header>Brightness</ion-list-header> -->
   <ion-list [inset]="true">
     <ion-item>
-      <ion-toggle [(ngModel)]="paletteToggle" (ionChange)="toggleChange($event)" justify="space-between"
-        >Dark Mode</ion-toggle
-      >
+      <ion-toggle [(ngModel)]="paletteToggle" (ionChange)="toggleChange($event)" justify="space-between">
+        Modo oscuro</ion-toggle>
     </ion-item>
   </ion-list>
 

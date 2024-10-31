@@ -1,105 +1,93 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      MediSphere
-    </ion-title>
+    <ion-title>MediSphere</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">MediSphere</ion-title>
-    </ion-toolbar>
-  </ion-header> <br>
-
-  <!-- <div id="container">
-    <ion-button routerLink="/pacientes" fill="outline" shape="round">
-      <ion-icon slot="start" name="person-circle"></ion-icon>
-      Ir a Pacientes
-    </ion-button>
-
-  </div> -->
-
   <ion-grid>
-    <ion-row>
-      <!-- Widget: Pacientes Registrados -->
-      <ion-col size="6">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Pacientes Registrados</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <h2>{{ totalPacientes }}</h2>
-            <p>Total de pacientes en la clínica</p>
-          </ion-card-content>
-          <ion-item>
-            <ion-button routerLink="/pacientes" fill="outline" slot="end">Ver Pacientes</ion-button>
-          </ion-item>
-        </ion-card>
-      </ion-col>
+  <!-- Card: Pacientes Registrados -->
+  <ion-col size="6">
+    <ion-card button routerLink="/pacientes" class="custom-card">
+      <ion-card-header>
+        <ion-card-title>Pacientes Registrados</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-icon name="person-add-outline" size="large"></ion-icon>
+        <h2>{{ totalPacientes }}</h2>
+        <p>Total de pacientes</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
 
-      <!-- Widget: Citas del Día -->
-      <ion-col size="6">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Citas del Día</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <h2>10</h2>
-            <p>Citas programadas para hoy</p>
-          </ion-card-content>
-          <ion-item>
-            <ion-button routerLink="/citas" fill="outline" slot="end">Ver Citas</ion-button>
-          </ion-item>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+  <!-- Card: Citas del Día -->
+  <ion-col size="6">
+    <ion-card button routerLink="/citas" class="custom-card">
+      <ion-card-header>
+        <ion-card-title>Citas del Día</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-icon name="calendar-outline" size="large"></ion-icon>
+        <p>Citas programadas para hoy</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
 
-    <ion-row>
-      <!-- Widget: Doctores Disponibles -->
-      <ion-col size="6">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Doctores Disponibles</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <h2>{{ totalDoctores }}</h2>
-            <p>Doctores en consulta actualmente</p>
-          </ion-card-content>
-          <ion-item>
-            <ion-button routerLink="/doctores" fill="outline" slot="end">Ver Doctores</ion-button>
-          </ion-item>
-        </ion-card>
-      </ion-col>
+   <!-- Card:Doctores Disponibles -->
+   <ion-col size="6">
+    <ion-card button routerLink="/doctores" class="custom-card">
+      <ion-card-header>
+        <ion-card-title>Doctores Disponibles</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-icon name="medical-outline" size="large"></ion-icon>
+        <h2>{{ totalDoctores }}</h2>
+        <p>Doctores en consulta actualmente</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
 
-      <!-- Widget: Ingresos Mensuales -->
-      <ion-col size="6">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Ingresos Mensuales</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <h2>$12,000</h2>
-            <p>Ingresos estimados este mes</p>
-          </ion-card-content>
-          <ion-item>
-            <ion-button fill="outline" slot="end">Ver Detalles</ion-button>
-          </ion-item>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+  <!-- Card:Ingresos Mensuales -->
+  <ion-col size="6">
+    <ion-card button routerLink="/pacientes" class="custom-card">
+      <ion-card-header>
+        <ion-card-title>Ingresos Mensuales</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-icon name="wallet-outline" size="large"></ion-icon>
+        <h2>$12,000</h2>
+        <p>Ingresos estimados este mes</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+
+
+     <!-- Card: Pacientes Expedientes -->
+     <ion-col size="6">
+      <ion-card button routerLink="/doctores" class="custom-card">
+        <ion-card-header>
+          <ion-card-title>Expedientes</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon name="fitness-outline" size="large"></ion-icon>
+          <h2>{{ totalDoctores }}</h2>
+          <p>Expedientes actualmente</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+     <!-- Card: alerta -->
+     <ion-col size="6">
+      <ion-card button routerLink="/loginpage" class="custom-card">
+        <ion-card-header>
+          <ion-card-title>Alerta</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-icon name="notifications-outline" size="large"></ion-icon>
+          <p>Alertas</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
   </ion-grid>
-
-
-    <!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-      <ion-fab-button>
-        <ion-icon name="camera"></ion-icon>
-      </ion-fab-button>
-    </ion-fab> -->
-
-
-
-
-
 </ion-content>
