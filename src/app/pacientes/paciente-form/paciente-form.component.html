@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="medium" (click)="closeModal()">Cancel</ion-button>
+      <ion-button color="medium" (click)="closeModal()">Cancelar</ion-button>
     </ion-buttons>
-    <ion-title>Paciente</ion-title>
+    <!-- <ion-title class="title-header">Paciente</ion-title> -->
     <!-- <ion-buttons slot="end">
       <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
     </ion-buttons> -->
@@ -13,28 +13,27 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Formulario de Paciente</ion-card-title>
+      <!-- <ion-card-title>Formulario de Paciente</ion-card-title> -->
     </ion-card-header>
     <ion-card-content>
       <form [formGroup]="form" (ngSubmit)="submitForm()">
+
         <ion-item>
-          <ion-label>Nombre</ion-label>
-          <ion-input formControlName="nombre"></ion-input>
+          <ion-input label="Nombre"  formControlName="nombre" placeholder="Ingresa nombre"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label>Apellido</ion-label>
-          <ion-input formControlName="apellido"></ion-input>
+          <ion-input label="Nombre"  formControlName="apellido" placeholder="Ingresa apellidos"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label>DUI</ion-label>
-          <ion-input formControlName="dui"></ion-input>
+          <ion-input label="Nombre"  formControlName="dui" placeholder="Ingresa DUI"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label>Fecha de nacimiento</ion-label>
-          <ion-input formControlName="fecha_nacimiento"></ion-input>
+          <!-- <ion-input formControlName="fecha_nacimiento"></ion-input> -->
+          <ion-input formControlName="fecha_nacimiento" type="date" required></ion-input>
         </ion-item>
 
         <ion-item>

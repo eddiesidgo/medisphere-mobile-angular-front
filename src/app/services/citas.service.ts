@@ -11,6 +11,9 @@ export class CitasService {
 
   constructor(private http: HttpClient) { }
 
+  
+
+  
   // Obtener todas las citas
   getCitas(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
@@ -24,5 +27,14 @@ export class CitasService {
   // Actualizar una cita existente
   updateCita(id: number, cita: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${id}`, cita);
+  }
+  //Busca doctores 
+  buscarDoctores(query: string): Observable<any[]> {
+    return this.http.get<any[]>(`http://127.0.0.1:8000/api/buscar-doctores?query=${query}`);
+  }
+
+
+  buscarPacientes(query: string): Observable<any[]>{
+    return this.http.get<any[]>(`http://127.0.0.1:8000/api/buscar-pacientes?query=${query}`);
   }
 }

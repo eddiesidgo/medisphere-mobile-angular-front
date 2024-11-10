@@ -4,9 +4,7 @@
       <ion-button color="medium" (click)="closeModal()">Cancel</ion-button>
     </ion-buttons>
     <ion-title>Citas</ion-title>
-    <!-- <ion-buttons slot="end">
-      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
-    </ion-buttons> -->
+
   </ion-toolbar>
 </ion-header>
 
@@ -16,25 +14,42 @@
       <ion-card-title>Formulario de Cita</ion-card-title>
     </ion-card-header>
     <form [formGroup]="citaForm" (ngSubmit)="submitForm()">
-      <ion-item>
-        <ion-label position="floating">Doctor ID</ion-label>
-        <ion-input formControlName="doctor_id"></ion-input>
-      </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Paciente ID</ion-label>
-        <ion-input formControlName="paciente_id"></ion-input>
+        <ion-label>Doctor</ion-label>
+        <ion-input
+          (ionInput)="onBuscarDoctor($event)"
+          placeholder="Buscar doctor..."
+          clearInput
+        ></ion-input>
       </ion-item>
+      
 
+      <!-- Lista de resultados de búsqueda filtrados -->
+      <ion-list *ngIf="resultadosDoctores.length > 0">
+        <ion-item *ngFor="let doctor of resultadosDoctores" (click)="seleccionarDoctor(doctor)">
+          {{ doctor.nombre }}
+        </ion-item>
+      </ion-list>
+      
+      <ion-item>
+        <ion-label>Paciente</ion-label>
+        <ion-input
+          (ionInput)="onBuscarPaciente($event)"
+          placeholder="Buscar paciente..."
+          clearInput
+        ></ion-input>
+      </ion-item>
+       <ion-list *ngIf="resultadosDoctores.length > 0">
+        <ion-item *ngFor="let doctor of resultadosDoctores" (click)="seleccionarPaciente(doctor)">
+          {{ doctor.nombre }}
+        </ion-item>
+      </ion-list>
+      
       <ion-item>
         <ion-label position="floating">Título</ion-label>
         <ion-input formControlName="title"></ion-input>
       </ion-item>
-
-      <!-- <ion-item>
-        <ion-label position="floating">Fecha</ion-label>
-        <ion-input type="date" formControlName="date"></ion-input>
-      </ion-item> -->
 
       <ion-item>
         <ion-label >Fecha y Hora</ion-label>

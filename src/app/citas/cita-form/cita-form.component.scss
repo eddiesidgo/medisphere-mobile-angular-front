@@ -1,0 +1,18 @@
+ion-list {
+    position: absolute;
+    background: white;
+    width: 100%;
+    z-index: 10;
+    border: 1px solid #ddd;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  ion-item {
+    cursor: pointer;
+  }
+  
+  ion-item:hover {
+    background-color: #f0f0f0;
+  }
+  

@@ -14,19 +14,21 @@
     </ion-card-header>
     <ion-card-content>
       <form [formGroup]="form" (ngSubmit)="submitForm()">
-        <ion-item>
-          <ion-label>Nombre</ion-label>
-          <ion-input formControlName="nombre"></ion-input>
-        </ion-item>
+
 
         <ion-item>
-          <ion-label>Apellido</ion-label>
-          <ion-input formControlName="apellido"></ion-input>
+          <ion-input label="Nombre"  formControlName="nombre" placeholder="Ingresa nombre"></ion-input>
         </ion-item>
 
+
+        
         <ion-item>
-          <ion-label>Especialidad</ion-label>
-          <ion-input formControlName="especialidad"></ion-input>
+          <ion-input label="Nombre"  formControlName="apellido" placeholder="Ingresa apellidos"></ion-input>
+        </ion-item>
+    
+
+        <ion-item>
+          <ion-input label="Especialidad"  formControlName="especialidad" placeholder="Ingresa la especialidad"></ion-input>
         </ion-item>
 
 

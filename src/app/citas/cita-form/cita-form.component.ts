@@ -12,11 +12,15 @@ import { CitasService } from 'src/app/services/citas.service';
 export class CitaFormComponent  implements OnInit {
   @Input() cita: any;
   // @Input() patients: any[] = [];
+  resultadosPacientes: any [] = [];
+  resultadosDoctores: any[] = []; // Array para almacenar los resultados de la búsqueda
   @Output() onSubmit = new EventEmitter<any>();
   citaForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private citasService: CitasService, private modalController: ModalController) {
-
+    this.citaForm = this.formBuilder.group({
+      doctor_id: ['']
+    });
    }
 
   ngOnInit() {
@@ -60,5 +64,43 @@ export class CitaFormComponent  implements OnInit {
   closeModal(){
     this.modalController.dismiss();
   }
+  
+      onBuscarDoctor(event: any) {
+        const query = event.target.value;
 
+        
+
+
+        // Realiza la búsqueda solo si hay al menos 2 caracteres
+        if (query.length >= 2) {
+            this.citasService.buscarDoctores(query).subscribe((data: any[]) => {
+                this.resultadosDoctores = data; // Guarda los resultados filtrados
+            });
+        } else {
+            this.resultadosDoctores = []; // Limpia los resultados si la consulta es demasiado corta
+        }
+      }
+      onBuscarPaciente(event: any) {
+        const query = event.target.value;
+
+        if (query.length >= 2) {
+            this.citasService.buscarPacientes(query).subscribe((data: any[]) => {
+                this.resultadosPacientes = data; // Guarda los resultados filtrados
+            });
+        } else {
+            this.resultadosPacientes = []; // Limpia los resultados si la consulta es demasiado corta
+        }
+      }
+
+
+  seleccionarDoctor(doctor: any) {
+    this.citaForm.get('doctor_id')?.setValue(doctor.id); // Asigna el ID del doctor al campo oculto
+    this.resultadosDoctores = []; // Limpia la lista de resultados
+  }
+
+
+  seleccionarPaciente(paciente: any) {
+    this.citaForm.get('paciente_id')?.setValue(paciente.id); 
+    this.resultadosPacientes = []; 
+  }
 }

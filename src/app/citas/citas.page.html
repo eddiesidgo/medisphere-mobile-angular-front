@@ -1,39 +1,35 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button default-href="/"></ion-back-button>
+      <ion-back-button 
+      text="" default-href="/"></ion-back-button>
     </ion-buttons>
     <ion-title>Citas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-header collapse="condense">
-    <ion-toolbar>
 
-      <ion-title size="large">Citas  <ion-button (click)="openModal()" class="ion-justify-content-center" size="small" color="dark"><ion-icon name="add-circle-outline"></ion-icon></ion-button></ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="calendar-container">
+    <full-calendar [options]="calendarOptions"></full-calendar>
+  </div>
 
+  <div class="event-header">
+    <h2>Próximas Citas</h2>
+    <ion-title size="large"><ion-button (click)="openModal()" class="ion-justify-content-center" size="small" color="dark"><ion-icon name="add-circle-outline"></ion-icon>
+      Agregar</ion-button></ion-title>
+  </div>
 
-  <full-calendar [options]="calendarOptions"></full-calendar> <br>
-
-
-
-
-  <ion-item *ngFor="let event of events">
-    <ion-label>
-      {{ event.title }} Fecha: {{ event.date }}
-    </ion-label>
-
-  </ion-item>
-
-  <ion-modal [isOpen]="showForm" (willDimiss)="closeModal()">
-    <ion-content>
-      <app-cita-form
-      [cita]="selectedEvents"
-      (onSubmit)="handleFormSubmit($event)"
-      ></app-cita-form>
-    </ion-content>
-  </ion-modal>
+  <ion-list class="event-list">
+    <ion-card *ngFor="let event of events" class="event-card">
+      <ion-card-content>
+        <strong>{{ event.title }}</strong> 
+        <p>Estado: {{ event.status }}</p> 
+        <p>Fecha:{{ event.date | date }}, {{ event.time }}</p>
+        <p>Paciente: {{ event.name }}</p><br>
+        <p id="Doctor">Doctor: {{ event.doctor }}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>

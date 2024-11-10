@@ -1,11 +1,39 @@
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-
-
+}
+.name_users{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+ion-label{
+  font-size: 16px;
+  font-weight: bold;
+}
+ion-avatar {
+  width: 150px;  
+  height: 150px;
+  --color: transparent;
+  --background: transparent;
+}
+.avatar-user{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+// #text-general{
+//   text-align: center;
+//   font-weight: normal;
+//  }
+ 
+#text-general-2{
+ text-align: center;
+ color: red;
 }

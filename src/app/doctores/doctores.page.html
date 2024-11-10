@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button default-href="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>Doctores</ion-title>
+    <ion-title class="title-header">Doctores</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,25 +14,29 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list>
-    <ion-item>
-      <ion-button (click)="openModal()" color="dark" expand="block">
-        Agregar Doctor
-      </ion-button>
-    </ion-item>
-    <ion-item *ngFor="let doctor of doctores">
-      <!-- <ion-avatar slot="start">
-        <img [src]="doctor.avatar" alt="Avatar">
-      </ion-avatar> -->
-      <ion-label>
-        <h2>Dr. {{ doctor.nombre }} {{ doctor.apellido }}</h2>
-        <p>{{ doctor.especialidad }}</p>
-      </ion-label>
+
+  <ion-item>
+    <ion-button (click)="openModal()" color="dark" expand="block">
+      Agregar
+    </ion-button>
+  </ion-item>
+  <ion-list class="Docs-list">
+    <ion-card *ngFor="let doctor of doctores">
+      <ion-card-content>
+        <p> 
+          <strong>Dr:</strong> {{ doctor.nombre }} {{ doctor.apellido }}
+        </p> 
+        <p>
+          <strong>Especialidad</strong> 
+          <p>
+            {{ doctor.especialidad }}
+          </p>
+
       <ion-button (click)="openModal(doctor)" color="dark"><ion-icon name="create-outline"></ion-icon></ion-button>
       <ion-button (click)="confirmDelete(doctor.id)" color="dark"><ion-icon name="trash-outline"></ion-icon></ion-button>
-    </ion-item>
-
-  </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-list> 
 
     <!-- Modal para el formulario de doctor -->
     <ion-modal [isOpen]="showForm" (willDismiss)="closeModal()">

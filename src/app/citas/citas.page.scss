@@ -1,23 +1,53 @@
-// /* Cambiar el tamaño de los botones en la barra de herramientas de FullCalendar */
-// :host ::ng-deep .fc .fc-toolbar button {
-//   font-size: 12px !important;  /* Cambia el tamaño de la fuente del botón */
-//   padding: 4px 8px !important; /* Ajusta el padding del botón */
-//   height: 25px !important;     /* Cambia la altura del botón */
-//   min-width: 50px !important;  /* Cambia el ancho mínimo del botón */
-// }
-
-/* Si también quieres ajustar el tamaño del título */
-:host ::ng-deep .fc-toolbar-title {
-  font-size: 15px !important; /* Ajusta el tamaño de la fuente del título */
+/* Cambiar el tamaño de los botones en la barra de herramientas de FullCalendar */
+:host ::ng-deep .fc .fc-toolbar button {
+  font-size: 12px !important;  /* Cambia el tamaño de la fuente del botón */
+  padding: 4px 8px !important; /* Ajusta el padding del botón */
+  height: 25px !important;     /* Cambia la altura del botón */
+  min-width: 50px !important;  /* Cambia el ancho mínimo del botón */
 }
 
+// /* Si también quieres ajustar el tamaño del título */
+:host ::ng-deep .fc-toolbar-title {
+  font-size: 12px !important; /* Ajusta el tamaño de la fuente del título */
+}
 
-// /* Añadir espacio entre los botones de la barra de herramientas */
-// :host ::ng-deep .fc .fc-toolbar button {
-//   margin: 0 2px !important;  /* Añadir margen horizontal entre los botones */
-// }
+.calendar-container {
+  padding: 12px;
+  background: transparent; 
+  border-radius: 12px;
+}
 
-/* Añadir padding a la barra de herramientas para que no esté pegada a los bordes */
-:host ::ng-deep .fc .fc-toolbar {
-  padding: 8px !important; /* Ajusta el padding de toda la barra */
+.event-header {
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.event-list {
+  padding: 12px;
+}
+
+.event-card {
+  --border-radius: 12px;
+  --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+  padding: 12px;
+  color: transparent;
+}
+
+.event-card strong {
+  font-size: 12px;
+}
+
+//Modifico mis cards
+.event-card p {
+  color: #6b6b6b;
+  font-size: 13px;
+  margin-top: 4px;
+}
+//Texto del nombre del doctor
+#Doctor{
+  text-align: center;
+  font-size: 12px;
+  // margin-top: 3px;
 }

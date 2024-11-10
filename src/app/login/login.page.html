@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-title>loginpage</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="ion-no-margin">
+    <ion-img src="assets/img/header1.png"></ion-img>
+    <ion-card-content>
+      <div class="LogForm">
+        <ion-item>
+          <ion-icon name="mail-outline"></ion-icon>
+          <ion-input
+            type="text"
+            name="correo"
+            placeholder="Correo Electrónico"
+            [(ngModel)]="email"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <ion-input
+            [type]="mostrarPassword ? 'text' : 'password'"
+            name="password"
+            placeholder="*****************"
+            [(ngModel)]="password"
+            required
+          ></ion-input>
+          <ion-icon
+            [name]="mostrarPassword ? 'eye-off-outline' : 'eye-outline'"
+            (click)="mostrarPasswords()"
+          ></ion-icon>
+        </ion-item>
+      </div>
+      <div class="sign-btn-warp">
+        <!-- Llama al método onSubmit al hacer clic en el botón -->
+        <ion-button fill="solid" class="sign-btn" (click)="onSubmit()">Iniciar sesión</ion-button>
+      </div>
+      <div class="text-tag">
+        <span>----------O----------</span>
+      </div>
+
+      <div class="restor-btn-warp">
+    <span routerLink="/recover-password">¿Has olvidado tu contraseña?</span>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
