@@ -28,12 +28,27 @@ ion-avatar {
   justify-content: center; 
   align-items: center; 
 }
-// #text-general{
-//   text-align: center;
-//   font-weight: normal;
-//  }
+#text-general-1{
+  text-align: center;
+  font-weight: normal;
+ }
  
 #text-general-2{
  text-align: center;
  color: red;
+}
+
+.avatar {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+}
+
+h2 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+}
+
+ion-button {
+  margin-top: 20px;
 }

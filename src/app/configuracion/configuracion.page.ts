@@ -4,6 +4,7 @@ import { addIcons } from 'ionicons';
 import { TranslateService } from '@ngx-translate/core';
 import { LoginService } from '../services/login-service.service';
 import { personCircle, personCircleOutline, sunny, sunnyOutline } from 'ionicons/icons';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-configuracion',
@@ -13,25 +14,28 @@ import { personCircle, personCircleOutline, sunny, sunnyOutline } from 'ionicons
 export class ConfiguracionPage implements OnInit {
   paletteToggle = false;
   name: string | null = '';
-
+  brightness: number = 50;
+  language: string = 'es';
   constructor(
     private router: Router,
     private translate: TranslateService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private route: ActivatedRoute 
   ) { 
     this.translate.setDefaultLang('en'); 
-    addIcons({ personCircle, personCircleOutline, sunny, sunnyOutline });
-  }
-
-  ngOnInit() {
+    // Configuración del tema oscuro (solo una vez)
     const prefersDark = window.matchMedia('(prefers-color-scheme: light)');
     this.initializeDarkPalette(prefersDark.matches);
     prefersDark.addEventListener('change', (mediaQuery) => this.initializeDarkPalette(mediaQuery.matches));
-
- 
-    this.name = this.loginService.getUsername();
   }
 
+  ngOnInit() {
+    this.name = this.loginService.getUsername()
+  }
+  getUsername(): string | null {
+    return localStorage.getItem('name');
+  }
+  
   initializeDarkPalette(isDark: boolean) {
     this.paletteToggle = isDark;
     this.toggleDarkPalette(isDark);
@@ -58,4 +62,5 @@ export class ConfiguracionPage implements OnInit {
   changeLanguage(lang: string) {
     this.translate.use(lang); // Cambia el idioma
   }
+
 }

@@ -5,20 +5,21 @@
 </ion-header>
 
 <ion-content>
+
   <div class="avatar-user">
     <ion-avatar>
       <img alt="Silhouette of a person's head" src="https://th.bing.com/th/id/R.8e20e84d7fad263e7ea4a5baf1798e82?rik=Ng3tLj3X%2fouM5g&pid=ImgRaw&r=0" />
     </ion-avatar>
   </div>
 
-  <div class="name_users">
+   <div class="name_users">
     <ion-label *ngIf="name">{{ name }}</ion-label>
   </div>
-  
     <ion-list [inset]="true">
       <ion-item>
         <ion-icon name="person-outline"></ion-icon>
-       <ion-label id="text-general">Datos Personales</ion-label>
+       <ion-label id="text-general-1"> 
+        Datos Personales</ion-label>
       </ion-item>
     </ion-list> 
   <ion-list [inset]="true">
@@ -45,19 +46,22 @@
     <ion-item>
       <ion-icon name="language-outline"></ion-icon>
      <ion-label id="text-general">Idioma</ion-label>
-     <ion-button (click)="changeLanguage('es')">Español</ion-button>
-     <ion-button (click)="changeLanguage('en')">English</ion-button>
+     <ion-segment>
+     <ion-segment-button (click)="changeLanguage('es')">Español</ion-segment-button>
+     <ion-segment-button (click)="changeLanguage('en')">English</ion-segment-button>
+    </ion-segment>
     </ion-item>
   </ion-list>
   <ion-list [inset]="true">
     <ion-item>
-     <ion-label id="text-general">Términos y Condiciones</ion-label>
+     <ion-label id="text-general-1">Términos y Condiciones</ion-label>
     </ion-item>
   </ion-list>
   <ion-list [inset]="true">
     <ion-item>
-      <ion-icon name="help-circle-outline"></ion-icon>
-     <ion-label id="text-general">Ayuda</ion-label>
+      <ion-item button>
+        <ion-label id="text-general-1">Ayuda</ion-label>
+      </ion-item>   
     </ion-item>
   </ion-list>
     <ion-list id="btn-close-sesion" [inset]="true">
