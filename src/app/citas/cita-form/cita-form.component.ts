@@ -26,6 +26,7 @@ export class CitaFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Prellena el formulario si hay una cita seleccionada
     this.citaForm = this.formBuilder.group({
       doctor_id: [this.cita?.doctor_id || '', Validators.required],
       paciente_id: [this.cita?.paciente_id || '', Validators.required],
@@ -33,44 +34,51 @@ export class CitaFormComponent implements OnInit {
       date: [this.cita?.date || '', Validators.required],
       estado: [this.cita?.estado || '', Validators.required],
     });
-
+  
     this.loadPacientes();
     this.loadDoctores();
   }
-
-  // Método para obtener la lista de pacientes
+  
   loadPacientes() {
-    this.pacientesService.getPacientes().subscribe(
-      (data) => {
-        this.pacientes = data;
-      },
-      (error) => {
-        console.error('Error al obtener los pacientes:', error);
-      }
-    );
+    this.pacientesService.getPacientes().subscribe((pacientes) => {
+      console.log('Pacientes cargados:', pacientes);
+      this.pacientes = pacientes;
+      this.initializeForm();  // Inicializa el formulario después de cargar los pacientes
+    });
   }
 
-  // Método para obtener la lista de doctores
+  // Método para cargar los doctores
   loadDoctores() {
-    this.doctoresService.getDoctores().subscribe(
-      (data) => {
-        this.doctores = data;
-      },
-      (error) => {
-        console.error('Error al obtener los doctores:', error);
-      }
-    );
+    this.doctoresService.getDoctores().subscribe((doctores) => {
+      console.log('Doctores cargados:', doctores);
+      this.doctores = doctores;
+      this.initializeForm();  // Inicializa el formulario después de cargar los doctores
+    });
+  }
+
+  // Inicializa el formulario
+  initializeForm() {
+    // Solo inicializa el formulario si los datos están cargados
+    if (this.pacientes.length > 0 && this.doctores.length > 0) {
+      this.citaForm = this.formBuilder.group({
+        id: [this.cita?.id || ''],
+        doctor_id: [this.cita?.doctor_id || '', Validators.required],
+        paciente_id: [this.cita?.paciente_id || '', Validators.required],
+        title: [this.cita?.title || '', Validators.required],
+        date: [this.cita?.date || '', Validators.required],
+        estado: [this.cita?.estado || '', Validators.required],
+      });
+    }
   }
 
   submitForm() {
     if (this.citaForm.valid) {
-      const citaData = { ...this.citaForm.value, id: this.cita?.id || null };
-      console.log('Datos de la cita que se envían al componente padre:', citaData);
-      this.modalController.dismiss(citaData);
+      this.modalController.dismiss(this.citaForm.value); // Envía el valor del formulario al modal
     } else {
-      console.error('Formulario no válido');
+      console.log('Formulario no válido');
     }
   }
+  
 
   // Función para manejar el cambio de fecha
   onDateChange(event: any) {

@@ -70,6 +70,7 @@ export class CitasPage implements OnInit {
       this.createCita(citaData); // Llama a createCita cuando no hay un id
     }
   }
+  
 
   // Método para crear una nueva cita usando el servicio
   createCita(citaData: any) {
@@ -86,17 +87,28 @@ export class CitasPage implements OnInit {
 
   // Método para actualizar una cita usando el servicio
   updateCita(citaData: any) {
-    this.citasService.updateCita(citaData.id, citaData).subscribe((cita) => {
-      console.log('Cita actualizada:', cita);
-      // Actualiza la cita en el calendario
-      const index = this.events.findIndex(c => c.id === citaData.id);
-      this.events[index] = cita;
-      this.closeModal(); // Cierra el modal
-    },
-    (error) => {
-      console.error('Error al actualizar la cita:', error);
-    });
+    if (!citaData.id) {
+      console.error('Error: El id de la cita no está presente');
+      return;
+    }
+  
+    this.citasService.updateCita(citaData.id, citaData).subscribe(
+      (cita) => {
+        console.log('Cita actualizada:', cita);
+        // Encuentra el índice de la cita en el arreglo y actualiza
+        const index = this.events.findIndex(c => c.id === citaData.id);
+        if (index > -1) {
+          this.events[index] = cita;
+        }
+        this.closeModal();
+      },
+      (error) => {
+        console.error('Error al actualizar la cita:', error);
+      }
+    );
   }
+  
+  
 
   calendarOptions: CalendarOptions = {
     initialView: 'timeGridWeek',
