@@ -27,27 +27,31 @@
   padding: 12px;
 }
 
-.event-card {
-  --border-radius: 12px;
-  --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 12px;
-  padding: 12px;
-  color: transparent;
-}
+// /* Asegúrate de que el color de la tarjeta sea visible */
+// .event-card {
+//   --border-radius: 12px;
+//   --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+//   margin-bottom: 12px;
+//   padding: 12px;
+//   color: #333; /* Establecer un color visible para el texto */
+// }
 
-.event-card strong {
-  font-size: 12px;
-}
+// /* Estilo de los párrafos dentro de las tarjetas */
+// .event-card p {
+//   color: #6b6b6b;
+//   font-size: 13px;
+//   margin-top: 4px;
+// }
 
-//Modifico mis cards
-.event-card p {
-  color: #6b6b6b;
-  font-size: 13px;
-  margin-top: 4px;
-}
-//Texto del nombre del doctor
-#Doctor{
-  text-align: center;
-  font-size: 12px;
-  // margin-top: 3px;
-}
+// //Modifico mis cards
+// .event-card p {
+//   color: #6b6b6b;
+//   font-size: 13px;
+//   margin-top: 4px;
+// }
+// /* Texto del nombre del doctor */
+// #Doctor {
+//   text-align: center;
+//   font-size: 12px;
+//   color: #333; /* Asegúrate de que el texto sea visible */
+// }

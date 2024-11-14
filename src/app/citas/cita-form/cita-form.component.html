@@ -4,7 +4,6 @@
       <ion-button color="medium" (click)="closeModal()">Cancel</ion-button>
     </ion-buttons>
     <ion-title>Citas</ion-title>
-
   </ion-toolbar>
 </ion-header>
 
@@ -14,48 +13,37 @@
       <ion-card-title>Formulario de Cita</ion-card-title>
     </ion-card-header>
     <form [formGroup]="citaForm" (ngSubmit)="submitForm()">
-
+      
+      <!-- Select de Doctor -->
       <ion-item>
-        <ion-label>Doctor</ion-label>
-        <ion-input
-          (ionInput)="onBuscarDoctor($event)"
-          placeholder="Buscar doctor..."
-          clearInput
-        ></ion-input>
+        <!-- <ion-label position="floating">Doctor</ion-label> -->
+        <ion-select formControlName="doctor_id" placeholder="Seleccione un doctor" required>
+          <ion-select-option *ngFor="let doctor of doctores" [value]="doctor.id">
+           Dr.  {{ doctor.nombre }} {{ doctor.apellido }}<!-- Asegúrate de que esta propiedad sea la correcta -->
+          </ion-select-option>
+        </ion-select>
       </ion-item>
-      
 
-      <!-- Lista de resultados de búsqueda filtrados -->
-      <ion-list *ngIf="resultadosDoctores.length > 0">
-        <ion-item *ngFor="let doctor of resultadosDoctores" (click)="seleccionarDoctor(doctor)">
-          {{ doctor.nombre }}
-        </ion-item>
-      </ion-list>
-      
+      <!-- Select de Paciente -->
       <ion-item>
-        <ion-label>Paciente</ion-label>
-        <ion-input
-          (ionInput)="onBuscarPaciente($event)"
-          placeholder="Buscar paciente..."
-          clearInput
-        ></ion-input>
+        <!-- <ion-label position="floating">Paciente</ion-label> -->
+        <ion-select formControlName="paciente_id" placeholder="Seleccione un paciente" required>
+          <ion-select-option *ngFor="let paciente of pacientes" [value]="paciente.id">
+            {{ paciente.nombre }} {{ paciente.apellido }}<!-- Asegúrate de que esta propiedad sea la correcta -->
+          </ion-select-option>
+        </ion-select>
       </ion-item>
-       <ion-list *ngIf="resultadosDoctores.length > 0">
-        <ion-item *ngFor="let doctor of resultadosDoctores" (click)="seleccionarPaciente(doctor)">
-          {{ doctor.nombre }}
-        </ion-item>
-      </ion-list>
-      
+
+      <!-- Título de la cita -->
       <ion-item>
         <ion-label position="floating">Título</ion-label>
         <ion-input formControlName="title"></ion-input>
       </ion-item>
 
+      <!-- Fecha y hora -->
       <ion-item>
-        <ion-label >Fecha y Hora</ion-label>
-        <!-- Botón que abre el selector de fecha y hora -->
+        <ion-label>Fecha y Hora</ion-label>
         <ion-datetime-button datetime="datetime"></ion-datetime-button>
-        <!-- Aquí se monta el modal con el selector de fecha y hora -->
         <ion-modal [keepContentsMounted]="true">
           <ng-template>
             <ion-datetime id="datetime" presentation="date-time" (ionChange)="onDateChange($event)"></ion-datetime>
@@ -63,14 +51,13 @@
         </ion-modal>
       </ion-item>
 
+      <!-- Estado de la cita -->
       <ion-item>
         <ion-label position="floating">Estado</ion-label>
         <ion-input formControlName="estado"></ion-input>
       </ion-item>
 
-      <ion-button expand="full" type="submit">Crear Cita</ion-button>
+      <ion-button expand="full" type="submit" [disabled]="!citaForm.valid">Crear Cita</ion-button>
     </form>
-
   </ion-card>
-
 </ion-content>

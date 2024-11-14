@@ -28,7 +28,8 @@ export class CitasPage implements OnInit {
     this.citasService.getCitas().subscribe((citas) => {
       this.events = citas.map(cita => ({
         title: cita.title,
-        date: cita.date
+        date: cita.date,
+        estado: cita.estado
       }));
       console.log('citas', this.events);
 

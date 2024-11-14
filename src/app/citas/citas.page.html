@@ -11,25 +11,30 @@
 <ion-content>
 
 <ion-content>
+  
   <div class="calendar-container">
+    <ion-button (click)="openModal()" class="ion-justify-content-center" size="small" color="dark"><ion-icon name="add-circle-outline"></ion-icon>
+      Agregar</ion-button>
     <full-calendar [options]="calendarOptions"></full-calendar>
   </div>
 
   <div class="event-header">
     <h2>Próximas Citas</h2>
-    <ion-title size="large"><ion-button (click)="openModal()" class="ion-justify-content-center" size="small" color="dark"><ion-icon name="add-circle-outline"></ion-icon>
-      Agregar</ion-button></ion-title>
+    <!-- <ion-title size="large"><ion-button (click)="openModal()" class="ion-justify-content-center" size="small" color="dark"><ion-icon name="add-circle-outline"></ion-icon>
+      Agregar</ion-button></ion-title> -->
   </div>
 
   <ion-list class="event-list">
     <ion-card *ngFor="let event of events" class="event-card">
       <ion-card-content>
         <strong>{{ event.title }}</strong> 
-        <p>Estado: {{ event.status }}</p> 
+        <p>Estado: {{ event.estado }}</p> 
         <p>Fecha:{{ event.date | date }}, {{ event.time }}</p>
         <p>Paciente: {{ event.name }}</p><br>
         <p id="Doctor">Doctor: {{ event.doctor }}</p>
       </ion-card-content>
     </ion-card>
   </ion-list>
+
+  
 </ion-content>
