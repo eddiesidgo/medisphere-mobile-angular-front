@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar Consulta</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="consultaForm" (ngSubmit)="submitForm()">
+    <ion-item>
+      <ion-label position="stacked">Diagnóstico</ion-label>
+      <ion-input formControlName="diagnostico"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Código de Cita</ion-label>
+      <ion-input formControlName="cita_id" readonly></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" [disabled]="consultaForm.invalid">
+      Guardar
+    </ion-button>
+  </form>
+</ion-content>

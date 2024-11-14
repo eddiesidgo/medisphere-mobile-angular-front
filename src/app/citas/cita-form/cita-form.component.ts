@@ -73,7 +73,9 @@ export class CitaFormComponent implements OnInit {
 
   submitForm() {
     if (this.citaForm.valid) {
-      this.modalController.dismiss(this.citaForm.value); // Envía el valor del formulario al modal
+      const citaData = { ...this.citaForm.value, id: this.cita?.id || null };
+      console.log('Datos de la cita que se envían al componente padre:', citaData);
+      this.modalController.dismiss(citaData); // Envía el valor del formulario al modal
     } else {
       console.log('Formulario no válido');
     }
