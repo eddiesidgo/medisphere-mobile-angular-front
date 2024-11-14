@@ -27,11 +27,16 @@
   <ion-list class="event-list">
     <ion-card *ngFor="let event of events" class="event-card">
       <ion-card-content>
-        <strong>{{ event.title }}</strong> 
-        <p>Estado: {{ event.estado }}</p> 
+        <strong>{{ event.title }}</strong>
+        <p>Estado: {{ event.estado }}</p>
         <p>Fecha:{{ event.date | date }}, {{ event.time }}</p>
-        <p>Paciente: {{ event.name }}</p><br>
-        <p id="Doctor">Doctor: {{ event.doctor }}</p>
+        <p>Paciente: {{ event.paciente.nombre }} {{ event.paciente.apellido }}</p><br>
+        <p id="Doctor">Doctor: {{ event.doctor.nombre }} {{ event.doctor.apellido }}</p>
+  
+        <!-- Botón de Editar -->
+        <ion-button color="primary" (click)="openModal(event)">
+          Editar
+        </ion-button>
       </ion-card-content>
     </ion-card>
   </ion-list>

@@ -29,7 +29,9 @@ export class CitasPage implements OnInit {
       this.events = citas.map(cita => ({
         title: cita.title,
         date: cita.date,
-        estado: cita.estado
+        estado: cita.estado,
+        doctor: cita.doctor,
+        paciente: cita.paciente
       }));
       console.log('citas', this.events);
 
@@ -46,10 +48,10 @@ export class CitasPage implements OnInit {
       component: CitaFormComponent,
       componentProps: { cita }, // Pasa la cita seleccionada
     });
-
+  
     modal.onDidDismiss().then((result) => {
       if (result.data) {
-        this.handleFormSubmit(result.data);
+        this.handleFormSubmit(result.data); // Maneja el envío del formulario
       }
     });
     return await modal.present();
